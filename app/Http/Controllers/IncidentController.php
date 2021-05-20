@@ -90,6 +90,8 @@ class IncidentController extends Controller
         // if ($user->is_support)
         //     $incident->support_id = $user->id;
     
-        return back();
+        $project_sel_id = auth()->user()->selected_project_id;
+        $categories = Category::where('project_id', $project_sel_id)->get();
+        return view('incident.create', compact('categories'));
     }
 }

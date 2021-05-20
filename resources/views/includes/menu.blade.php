@@ -11,7 +11,7 @@
                 
                 @if(auth()->user()->is_client)
                     <li 
-                        @if(request()->is('crear-incidencia')) class="active" @endif> <a href="{{ route('report.create') }}">Generar Incidencia</a>
+                        @if(request()->is('crear-incidencia')) class="active" @endif> <a href="{{ route('report.create') }}">Reportar Incidencia</a>
                     </li>
                 @endif
 
