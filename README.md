@@ -4,7 +4,7 @@
 * El sistema permite reportar incidencias por cada proyecto, estas incidencias son gestionadas a través de los distintos niveles de atención (ej. Mesa de ayuda, soporte remoto, visita técnica, etc.)
 
 ### Demo
-- Para ver la demo del proyecto puede ingresar a: https://incidencia.herokuapp.com 
+- Para ver la demo del proyecto puede ingresar a: http://app-incidencia.herokuapp.com/ 
 
 ### Reglas de Negocio aplicables al proyecto
 
