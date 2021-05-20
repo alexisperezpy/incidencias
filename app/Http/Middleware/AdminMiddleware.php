@@ -9,7 +9,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         if(!auth()->check())
-            return redirect('login');
+            return redirect('ilogin');
             
         if(auth()->user()->role != 0)
             return redirect('home');

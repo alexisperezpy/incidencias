@@ -4,7 +4,6 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Project extends Model
 {
@@ -28,5 +27,10 @@ class Project extends Model
     public function levels()
     {
         return $this->hasMany('App\Level');
+    }
+
+    // accesors
+    public function getFirstLevelIdAttribute(){
+        return $this->levels->first()->id;
     }
 }

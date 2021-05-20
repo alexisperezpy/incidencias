@@ -6,20 +6,25 @@
         <ul class="nav nav-pills flex-column">
             @if(auth()->check())
                 <li 
-                    @if(request()->is('/')) class="active" @endif> <a href="{{ route('home') }}">Dashboard</a>
+                    @if(request()->is('/') || request()->is('home')) class="active" @endif> <a href="{{ route('home') }}">Dashboard</a>
                 </li>
                 
-                @if(!auth()->user()->is_client)
+                @if(auth()->user()->is_client)
                     <li 
-                        @if(request()->is('incidencias')) class="active" @endif> <a href="{{ route('report.index') }}">Ver Incidencias</a>
+                        @if(request()->is('crear-incidencia')) class="active" @endif> <a href="{{ route('report.create') }}">Generar Incidencia</a>
                     </li>
                 @endif
-                
-                <li 
-                    @if(request()->is('incidencia')) class="active" @endif> <a href="{{ route('report.create') }}">Reportar Incidencia</a>
-                </li>
-                
+
+                @if(auth()->user()->is_support)
+                    <li 
+                        @if(request()->is('crear-incidencia')) class="active" @endif> <a href="{{ route('report.create') }}">Reportar Incidencia</a>
+                    </li>
+                @endif
+
                 @if(auth()->user()->is_admin)
+                    <li 
+                        @if(request()->is('crear-incidencia')) class="active" @endif> <a href="{{ route('report.create') }}">Reportar Incidencia</a>
+                    </li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" role="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Administración

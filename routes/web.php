@@ -7,20 +7,23 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ProjectUserController;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', 'HomeController@getLogin')->name('ilogin');
 
 Auth::routes();
+Route::get('/', 'HomeController@getLogin')->name('ilogin');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/proyecto/seleccionado/{id}', 'HomeController@selectProject');
 
 // Incidencias
-Route::get('/incidencias', 'IncidentController@index')->name('report.index');
-Route::get('/incidencia', 'IncidentController@create')->name('report.create');
+Route::get('/ver/{id}', 'IncidentController@show')->name('report.ver');
+Route::get('/crear-incidencia', 'IncidentController@create')->name('report.create');
 Route::post('/incidencia', 'IncidentController@store')->name('report.store');
-Route::get('/incidencia{id}', 'IncidentController@edit')->name('report.edit');
-Route::get('/incidencia{id}/update', 'IncidentController@update')->name('report.update');
+Route::get('/incidencia/{id}', 'IncidentController@edit')->name('report.edit');
+Route::get('/incidencia/{id}/update', 'IncidentController@update')->name('report.update');
+Route::get('/incidencia/{id}/atender', 'IncidentController@atender')->name('report.atender');
+Route::post('/incidencia/{id}/updateAcciones', 'IncidentController@updateAcciones')->name('report.updateAcciones');
+Route::post('/incidencia/{id}/marcarResuelto', 'IncidentController@cerrarIncidente')->name('report.cerrarIncidente');
 
 
 /* Acciones protegidas, se requiere login del admin */

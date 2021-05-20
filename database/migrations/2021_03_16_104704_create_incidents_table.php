@@ -18,6 +18,8 @@ class CreateIncidentsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('severity',1); // A= Alto | N=Normal | M=Menor 
+            $table->boolean('active')->default(1); // 1= Pendiente ó asignado | 0= Resuelto 
+
 
             $table->unsignedBigInteger('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
