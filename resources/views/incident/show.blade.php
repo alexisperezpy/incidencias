@@ -52,7 +52,13 @@
                      <tr>
                         <td id="incident_resp">{{ $incident->support_name }}</td>
                         <td>Publico</td>
-                        <td>{{ $incident->state }}</td>
+
+                        @if($incident->state === 'Resuelto')
+                            <td class="bg-success">{{ $incident->state }}</td>
+                        @else
+                            <td class="bg-warning">{{ $incident->state }}</td>
+                        @endif
+                        
                         <td>{{ $incident->severity_full }}</td>
                     </tr>
                 </tbody>
@@ -85,7 +91,7 @@
                     <a href="{{route('report.atender',$incident->id),'/atender' }}" class="btn btn-warning btn-md ">Atender</a> 
                 @endif
                 
-                @if(auth()->user()->is_client && auth()->user()->id == $incident->client_id)
+                @if(auth()->user()->id == $incident->client_id && $incident->active != 0 && $incident->accion != null)
                     <a href="{{ route('report.cerrarIncidente',$incident->id) }}" class="btn btn-warning btn-md ">Marcar como Resuelto</a> 
                 @endif
                 

@@ -23,7 +23,7 @@ Route::get('/incidencia/{id}', 'IncidentController@edit')->name('report.edit');
 Route::get('/incidencia/{id}/update', 'IncidentController@update')->name('report.update');
 Route::get('/incidencia/{id}/atender', 'IncidentController@atender')->name('report.atender');
 Route::post('/incidencia/{id}/updateAcciones', 'IncidentController@updateAcciones')->name('report.updateAcciones');
-Route::post('/incidencia/{id}/marcarResuelto', 'IncidentController@cerrarIncidente')->name('report.cerrarIncidente');
+Route::get('/incidencia/{id}/marcarResuelto', 'IncidentController@cerrarIncidente')->name('report.cerrarIncidente');
 
 
 /* Acciones protegidas, se requiere login del admin */

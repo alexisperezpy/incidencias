@@ -41,7 +41,11 @@
                                                 <td>{{ $incidentes->severity_full }} </td>
                                             @endif
                                                 <td>{{ $incidentes->created_at }}</td>
-                                                <td>{{ $incidentes->state}}</td>
+                                                @if($incidentes->state === 'Resuelto')
+                                                    <td class="bg-success">{{ $incidentes->state }}</td>
+                                                @else
+                                                    <td class="bg-warning">{{ $incidentes->state }}</td>
+                                                @endif
                                                 <td>{{ $incidentes->description_short }}</td>
                                         </tr>
                                     @endforeach
@@ -89,7 +93,11 @@
                                                     <td>{{ $pendientes->severity_full }}</td>
                                                 @endif
                                                     <td>{{ $pendientes->created_at }}</td>
-                                                <td>{{ $pendientes->state }}</td>
+                                                @if($pendientes->state === 'Resuelto')
+                                                    <td class="bg-success">{{ $pendientes->state }}</td>
+                                                @else
+                                                    <td class="bg-warning">{{ $pendientes->state }}</td>
+                                                @endif
                                                 <td>{{ $pendientes->description_short }}</td>
                                                 @if($pendientes->support_id == null)
                                                     <td>
@@ -152,7 +160,11 @@
                                                     <td>{{ $incident->severity_full }}</td>
                                                 @endif
                                                 <td>{{ $incident->created_at }}</td>
-                                                <td>{{ $incident->state }}</td>
+                                                @if($incident->state === 'Resuelto')
+                                                    <td class="bg-success">{{ $incident->state }}</td>
+                                                @else
+                                                    <td class="bg-warning">{{ $incident->state }}</td>
+                                                @endif
                                                 <td>{{ $incident->description_short }}</td>
                                                 <td>{{ $incident->support_name}}</td>
                                             </tr>
