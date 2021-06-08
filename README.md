@@ -1,4 +1,5 @@
 
+<img src="https://user-images.githubusercontent.com/45573287/119033348-1c30ac80-b97b-11eb-92c6-59502071db68.png" align="center" height="100" width="100" ></a>
 # Sistema para gestión de Incidencias 
 ----
 * El sistema permite reportar incidencias por cada proyecto, estas incidencias son gestionadas a través de los distintos niveles de atención (ej. Mesa de ayuda, soporte remoto, visita técnica, etc.)
