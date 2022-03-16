@@ -22,7 +22,20 @@ class IncidentController extends Controller
 
     public function atender($id)
     {
-        $incident = Incident::findorfail($id);
+        $user = auth()->user();
+        if (! $user->is_support)
+            return back();
+
+        $incident = Incident::findOrfail($id);
+        $projectUser = ProjectUser::where('project_id', $incident->project_id)
+                        ->where($user->id)->first();
+        
+        if (! $projectUser)
+            return back();
+        
+        if ($projectUser->level_id != $incident->level_id)
+            return back();
+            
         return view('incident.atender', compact('incident'));
     }
 

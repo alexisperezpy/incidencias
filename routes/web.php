@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 Auth::routes();
-Route::get('/', 'HomeController@getLogin')->name('ilogin');
+Route::get('/', 'HomeController@getLogin')->name('login');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');

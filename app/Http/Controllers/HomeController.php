@@ -17,7 +17,7 @@ class HomeController extends Controller
     }
    
     public function getLogin(){
-        return view('login2');
+        return view('login');
         // return view('login');
     
     }
@@ -27,16 +27,15 @@ class HomeController extends Controller
         $user = auth()->user();
         
         if ($user->is_admin){
-            $myIncidents = Incident::where('project_id', $user->selected_project_id)
-                ->where('support_id', $user->id)->get();
+            $allIncidents = Incident::where('project_id', $user->selected_project_id)->paginate(5);
             //dd($myIncidents);
 
             $pending_incidents = Incident::where('support_id', null)
-                                            ->where('project_id',$user->selected_project_id)->paginate(4);
+                                            ->where('project_id',$user->selected_project_id)->paginate(5);
             // dd($pending_incidents);
             $incidentsByMe = Incident::where('client_id', $user->id)->where('project_id', $user->selected_project_id)->get();
 
-            return view('dashboard', compact('myIncidents', 'pending_incidents', 'incidentsByMe'));
+            return view('dashboard', compact('allIncidents', 'pending_incidents', 'incidentsByMe'));
         }
 
         if ($user->is_support){

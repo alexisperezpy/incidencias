@@ -83,7 +83,8 @@
                     <input type="date" name="fecha_accion" class="form-control" value="{{ old('fecha_accion', date('Y-m-d')) }}" placeholder="Ingrese la fecha de la acción"></input>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-success pull-right">Registrar Acción</button>    
+                    <button class="btn btn-success mx-2 float-right">Registrar Acción</button>    
+                    <a href="{{ route('home') }}" class="btn btn-secondary ml-auto float-right">Cancelar</a>    
                 </div>
             </form>
             </div>

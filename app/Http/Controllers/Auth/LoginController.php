@@ -24,22 +24,17 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function authenticated(Request $request)
-    {
+    protected function authenticated(Request $request){
         $user = auth()->user();
         if (! $user->selected_project_id){
-            // si el usuario es admin o cliente
-            if ($user->is_admin || $user->is_client)
+                // si el usuario es admin o cliente
+            if ($user->is_admin || $user->is_client){
                 $user->selected_project_id = Project::first()->id;
-                $user->save();
-                return;
-            
-            // Si el usuario es Soporte
-            if (! $user->selected_project_id){
-            $user->selected_project_id = $user->projects->first()->id;
-            $user->save();
+            } else {
+                // Si el usuario es Soporte
+                $user->selected_project_id = $user->projects->first()->id;
             }
+            $user->save();
         }
     }
-
 }
